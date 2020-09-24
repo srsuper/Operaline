@@ -10,7 +10,7 @@ import time, random, sys, json, codecs, threading, glob, re, string, os, request
 with open('token.json', 'r') as fp:
     connecting = json.load(fp)
 if connecting['token'] == "":
-     client = LINE("emailmu@mail.com","passwordmu")
+     client = LINE("panutchakorn_2533@hotmail.com","takumi2533")
 else:
     client=LINE(authToken=connecting['token'])
 with open('cctv.json', 'r') as fp:
@@ -42,7 +42,7 @@ def restartBot():
     python = sys.executable
     os.execl(python, python, *sys.argv)
 def cTime_to_datetime(unixtime):
-    tz = pytz.timezone("Asia/Jakarta")
+    tz = pytz.timezone("Asia/Bangkok")
     timeNow = datetime.now(tz=tz)
     return datetime.fromtimestamp(str(timeNow))
 def dt_to_str(dt):
@@ -50,12 +50,12 @@ def dt_to_str(dt):
 def waktu(secs):
     mins, secs = divmod(secs,60)
     hours, mins = divmod(mins,60)
-    return '%02d Hours %02d Minute %02d Secs' % (hours, mins, secs)      
+    return '%02d Hours %02d Minute %02d Secs' % (hours, mins, secs)
 def time_converter(time):
     converted_time = datetime.datetime.fromtimestamp(
         int(time)
     ).strftime('%I:%M %p')
-    return converted_time    
+    return converted_time
 def allowLiff():
     url = 'https://access.line.me/dialog/api/permissions'
     data = {
@@ -218,7 +218,7 @@ def sendOpera(to, profile):
   }
 }
     opera = [opera1,opera2,opera3]
-    senorita = {"type": "flex","altText": "The G - Operation","contents": {"type": "carousel","contents": opera}}
+    senorita = {"type": "flex","altText": "The SKT - Operation","contents": {"type": "carousel","contents": opera}}
     client.sendTemp(to,senorita)
 
 def sendMention(to, text="", mids=[]):
@@ -248,15 +248,15 @@ def sendMention(to, text="", mids=[]):
         arr.append(arrData)
         textx += mention + str(text)
     client.sendMessage(to, textx, {'MENTION': str('{"MENTIONEES":' + json.dumps(arr) + '}')}, 0)
-    
+
 def clientBot(op):
     try:
         if op.type == 0:
             return
         if op.type == 55:
-            try:  
+            try:
                 print ("[ 55 ] READ MESSAGE")
-                if op.param1 in cctv['Point']:   
+                if op.param1 in cctv['Point']:
                     if op.param2 not in cctv['Point3'][op.param1]:
                        try:uprofile = "https://obs.line-scdn.net/" + client.getContact(op.param2).pictureStatus
                        except:uprofile = "https://imagizer.imageshack.com/v2/377x338q90/922/Z9ocJr.jpg"
@@ -285,7 +285,7 @@ def clientBot(op):
                 else:
                    pass
             except:
-                pass   
+                pass
 
 
         if op.type == 25:
@@ -295,14 +295,14 @@ def clientBot(op):
                 ang = msg.text
                 msg_id = msg.id
                 if msg.toType == 0 or msg.toType == 2:
-                 if msg.contentType == 2:      	
+                 if msg.contentType == 2:
                     if settings['ChangeVideoProfile'] == True:
                         client.downloadObjectMsg(msg.id,'path','video.mp4')
                         print('[NOTIF] VIDEO PROFILE PROCESSING')
                         client.sendMessage(msg.to, "Send picture to be profiled")
                         settings['ChangeVideoProfile']=False
                         settings['ChangeVideoProfile2']=True
-                 if msg.contentType == 1: 
+                 if msg.contentType == 1:
                     if settings['ChangeVideoProfile2'] == True:
                        client.downloadObjectMsg(msg.id,'path','foto.jpg')
                        client.updateProfileVideoPicture('video.mp4','foto.jpg')
@@ -315,7 +315,7 @@ def clientBot(op):
                        settings["changePictureProfile"] = False
                        client.updateProfilePicture(path)
                        client.deleteFile(path)
-                       client.sendMessage(msg.to, "Profile image updated.")                                             
+                       client.sendMessage(msg.to, "Profile image updated.")
                     if msg.to in settings["changeGroupPicture"]:
                        path = client.downloadObjectMsg(msg_id)
                        del settings["changeGroupPicture"][msg.to]
@@ -323,10 +323,10 @@ def clientBot(op):
                        client.deleteFile(path)
                        client.sendMessage(msg.to, "Group image updated.")
             except Exception as error:
-                client.sendMessage(msg.to, "{}".format(str(error))) 
+                client.sendMessage(msg.to, "{}".format(str(error)))
                 traceback.print_tb(error.__traceback__)
-                
-                
+
+
         if op.type == 25:
             try:
                 print ("[ 25 ] SEND MESSAGE")
@@ -339,7 +339,7 @@ def clientBot(op):
                  if msg.contentType == 0:
                     if ang is None:
                     	pass
-                    else:           
+                    else:
                         if ang.lower() == ".help":
                            profile = client.getContact(clientMid)
                            threading.Thread(target=sendOpera, args=(msg.to,profile)).start()
@@ -347,10 +347,10 @@ def clientBot(op):
                            tolol = "Gunakan awalan「. 」\nContoh .help"
                            goblok = "Gunakan awalan「. 」\nContoh .help\nJika bot tidak respon,\nsilahkan ketik '.allowliff'"
                            try:
-                              data = {"type": "flex","altText": "G-OPERA SELFBOT","contents": {"styles": {"body": {"backgroundColor": "#D34C09"}},"type": "bubble","body": {"contents": [{"contents": [{"contents": [{"text": "{}".format(goblok) ,"size": "md","margin": "none","color": "#FFFFFF","wrap": True,"weight": "regular","type": "text"}],"type": "box","layout": "baseline"}],"type": "box","layout": "vertical"}],"type": "box","spacing": "md","layout": "vertical"}}}
+                              data = {"type": "flex","altText": "SKT-OPERA SELFBOT","contents": {"styles": {"body": {"backgroundColor": "#D34C09"}},"type": "bubble","body": {"contents": [{"contents": [{"contents": [{"text": "{}".format(goblok) ,"size": "md","margin": "none","color": "#FFFFFF","wrap": True,"weight": "regular","type": "text"}],"type": "box","layout": "baseline"}],"type": "box","layout": "vertical"}],"type": "box","spacing": "md","layout": "vertical"}}}
                            except:
                               client.sendReply(msg.id,msg.to,"{}".format(tolol))
-                        if ang.lower() == ".me":                          
+                        if ang.lower() == ".me":
                             client.sendContact(msg.to,clientMid)
                         if ang.lower() == ".lurk" or ang.lower() == ".sider" or ang.lower() == ".kick" or ang.lower() == ".invite" or ang.lower() == ".updatename: " or ang.lower() == ".groupname:" or ang.lower() == ".updatebio:":
                             client.sendReplyMessage(msg.id,msg.to,"Silahkan ketik .panduan")
@@ -362,17 +362,17 @@ def clientBot(op):
                              client.getProfile()
                              timing = time.time()
                              ngegas = japri - timing
-                             client.sendMessage(msg.to, "Time: %.5f"%ngegas)
+                             client.sendMessage(msg.to, "ความเร็ว: %.5f"%ngegas)
                         if ang.lower() == ".runtime":
                            kopi = time.time() - botStart
-                           ang = "Selfbot has been running for:\n"+waktu(kopi)
+                           ang = "SKT bot has been running for:\n"+waktu(kopi)
                            client.sendMessage(msg.to,ang)
                         if ang.lower() == ".allowliff":
                             try:
                                 allowLiff()
                                 client.sendReplyMessage(msg.id, msg.to,"Flex mode enabled")
                             except:
-                            	client.sendMessage(msg.to,"Click and verify to use fiture  template.\nhttps://liff.line.me/1602876096-e9QWgjyo")                      	
+                            	client.sendMessage(msg.to,"Click and verify to use fiture  template.\nhttps://liff.line.me/1602876096-e9QWgjyo")
                         if ang.lower() == ".updatedual":
                            settings['ChangeVideoProfile']=True
                            client.sendMessage(msg.to, "Please send video.")
@@ -411,7 +411,7 @@ def clientBot(op):
                                    client.updateGroup(entot)
                                    set = client.reissueGroupTicket(msg.to)
                                    client.sendReplyMessage(msg.id,msg.to, "Group Ticket : \nhttps://line.me/R/ti/g/{}".format(str(set)))
-                        
+
                         if ang.lower() == ".ginfo":
                             if msg.toType == 2:
                                 group = client.getGroup(msg.to)
@@ -429,7 +429,7 @@ def clientBot(op):
                                 else:
                                     gQr = "Opened"
                                     gTicket = "https://line.me/R/ti/g/{}".format(str(client.reissueGroupTicket(group.id)))
-                                japri = "♡Group info♡"
+                                japri = "❂➣ Group info ⍟─"
                                 japri += "\n\n•Group Name : {}".format(str(group.name))
                                 japri += "\n•ID Group :\n {}".format(group.id)
                                 japri += "\n•Created By : {}".format(str(gCreator))
@@ -507,7 +507,7 @@ def clientBot(op):
                                except Exception as e:
                                   client.sendReplyMessage(msg.id, msg.to,"{}".format(str(e)))
 
-                        if ang.lower().startswith(".music: "):                       
+                        if ang.lower().startswith(".music: "):
                             try:
                                 music = ang.replace(".music: ","")
                                 putar = requests.get("http://mnazria.herokuapp.com/api/joox?search={}".format(str(urllib.parse.quote(music))))
@@ -522,7 +522,7 @@ def clientBot(op):
                             except Exception as e:
                                 client.sendReplyMessage(msg.id, msg.to,"{}".format(str(e)))
 
-                        if ang.lower().startswith(".instagram: "):                       
+                        if ang.lower().startswith(".instagram: "):
                             try:
                                 instagram = ang.replace(".instagram: ","")
                                 html = requests.get('https://www.instagram.com/' + instagram + '/?')
@@ -531,18 +531,18 @@ def clientBot(op):
                                 text = data[0].get('content').split()
                                 data1 = soup.find_all('meta', attrs={'property':'og:image'})
                                 text1 = data1[0].get('content').split()
-                                insta_ = "📲「Instagram Info」\n\n" 
+                                insta_ = "📲「Instagram Info」\n\n"
                                 insta_ += "◉  Profile Name : " + text[-3] + " " + text[-2] +"\n"
                                 insta_ += "◉  Username ID : " + text[-1] + "\n"
                                 insta_ += "◉  Followers : " + text[0] + "\n"
                                 insta_ += "◉  Following : " + text[2] + "\n"
-                                insta_ += "◉  Posts : " + text[4] + "\n"                    
+                                insta_ += "◉  Posts : " + text[4] + "\n"
                                 insta_ += "◉  Profile URL :\n" + "https://www.instagram.com/" + instagram
                                 insta_ += ""
                                 client.sendMessage(msg.to,"{}".format(str(insta_)))
                             except Exception as e:client.sendReplyMessage(msg.id, msg.to,"{}".format(str(e)))
 
-                        if ang.lower().startswith(".youtube: "):                       
+                        if ang.lower().startswith(".youtube: "):
                             try:
                                 query = ang.lower().replace(".youtube: ","")
                                 with requests.session() as s:
@@ -560,7 +560,7 @@ def clientBot(op):
                                            break
                             except Exception as e:client.sendReplyMessage(msg.id, msg.to,"{}".format(str(e)))
 
-                        if ang.lower().startswith(".image: "):                       
+                        if ang.lower().startswith(".image: "):
                             try:
                                  search = ang.lower().replace(".image: ","")
                                  url = 'https://www.google.com/search?espv=2&biw=1366&bih=667&tbm=isch&oq=kuc&aqs=mobile-gws-lite.0.0l5&q=' + search
@@ -572,13 +572,13 @@ def clientBot(op):
                                  client.sendImageWithURL(msg.to,path)
                             except Exception as e:client.sendMessage(msg.to, str(e))
 
-                        if ang.lower().startswith(".groupname: "):                       
+                        if ang.lower().startswith(".groupname: "):
                          if msg.toType == 2:
                             angg = client.getGroup(msg.to)
                             angg.name = ang.replace(".groupname: ","")
                             client.updateGroup(angg)
-                        
-                        if ang.lower().startswith(".updatebio: "):                       
+
+                        if ang.lower().startswith(".updatebio: "):
                          if msg.toType == 2:
                             jap = ang.split(".updatebio: ")
                             string = jap[1]
@@ -589,7 +589,7 @@ def clientBot(op):
                                client.sendReplyMessage(msg.id,msg.to, "Status bio changed to:\n" + string)
                             else:client.sendReplyMessage(msg.id,msg.to,"Maksimal 500 karakter.")
 
-                        if ang.lower().startswith(".updatename: "):                       
+                        if ang.lower().startswith(".updatename: "):
                          if msg.toType == 2:
                             jap = ang.split(".updatename: ")
                             string = jap[1]
@@ -601,7 +601,7 @@ def clientBot(op):
                             else:client.sendReplyMessage(msg.id,msg.to,"Maksimal 500 karakter.")
 
 
-                        if ang.lower().startswith(".line: "):                       
+                        if ang.lower().startswith(".line: "):
                             ang_id = ang.replace(".line: ","")
                             line_id = client.findContactsByUserid(line_id)
                             if True:
@@ -618,7 +618,7 @@ def clientBot(op):
                                   mentionees = mention['MENTIONEES']
                                   for mention in mentionees:
                                      client.kickoutFromGroup(msg.to,[mention['M']])
-                             else:pass                          
+                             else:pass
 
 
                         if ang.lower() == ".kickall":
@@ -628,10 +628,10 @@ def clientBot(op):
                              for angg in hoax.members:
                                  if angg.mid not in manage["admin"]:
                                      client.kickoutFromGroup(msg.to,[angg.mid])
-                             client.sendMessage(msg.to,"Rubish has been cleared")                            
+                             client.sendMessage(msg.to,"Rubish has been cleared")
 
 
-                        if ang.lower().startswith(".addadmin "):                           
+                        if ang.lower().startswith(".addadmin "):
                             key = eval(msg.contentMetadata["MENTION"])
                             key["MENTIONEES"][0]["M"]
                             targets = []
@@ -647,7 +647,7 @@ def clientBot(op):
                                              json.dump(manage, fp, sort_keys=True, indent=4)
                                          client.sendReplyMessage(msg.id,msg.to,client.getContact(target).displayName +" add to admin.")
                                       except Exception as error:
-                                         client.sendMessage(msg.to,"[ERROR]\n{}".format(str(error))) 
+                                         client.sendMessage(msg.to,"[ERROR]\n{}".format(str(error)))
 
 
                         if ang.lower().startswith(".deladmin "):
@@ -666,7 +666,7 @@ def clientBot(op):
                                             json.dump(manage, fp, sort_keys=True, indent=4)
                                         client.sendReplyMessage(msg.id,msg.to,client.getContact(target).displayName +" removed from admin.")
                                     except Exception as error:
-                                        client.sendMessage(msg.to,"[ ERROR]\n{}".format(str(error))) 
+                                        client.sendMessage(msg.to,"[ ERROR]\n{}".format(str(error)))
 
 
                         if ang.lower().startswith(".invite"):
@@ -734,32 +734,32 @@ def clientBot(op):
 
 
                         if ang.lower() == ".sider on":
-                            if msg.toType == 2:                     
+                            if msg.toType == 2:
                                 if msg.to in cctv["Point"]:
                                     cctv["Point3"][msg.to] = {}
-                                    with open('cctv.json', 'w') as fp:                            
+                                    with open('cctv.json', 'w') as fp:
                                         json.dump(cctv, fp, sort_keys=True, indent=4)
                                     client.sendReplyMessage(msg.id,msg.to,"Cek radar restarting..")
                                 else:
                                     cctv["Point"][msg.to]= True
                                     cctv["Point3"][msg.to] = {}
-                                    with open('cctv.json', 'w') as fp:                            
+                                    with open('cctv.json', 'w') as fp:
                                         json.dump(cctv, fp, sort_keys=True, indent=4)
                                     client.sendReplyMessage(msg.id,msg.to,"Cek radar running..")
 
 
                         if ang.lower() == ".sider off":
-                            if msg.toType == 2:                     
+                            if msg.toType == 2:
                                 if msg.to in cctv["Point"]:
                                     del cctv["Point"][msg.to]
-                                    with open('cctv.json', 'w') as fp:                            
+                                    with open('cctv.json', 'w') as fp:
                                         json.dump(cctv, fp, sort_keys=True, indent=4)
                                     client.sendReplyMessage(msg.id,msg.to,"Cek radar disabled.")
                                 else:
                                     client.sendReplyMessage(msg.id,msg.to,"Cek radar already disabled.")
-              
+
                         if ang.lower() == '.lurk on':
-                            tz = pytz.timezone("Asia/Jakarta")
+                            tz = pytz.timezone("Asia/Bangkok")
                             timeNow = datetime.now(tz=tz)
                             day = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday","Friday", "Saturday"]
                             hari = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"]
@@ -802,9 +802,9 @@ def clientBot(op):
                                      json.dump(cctv, fp, sort_keys=True, indent=4)
                                  client.sendReplyMessage(msg.id, msg.to, "Set reading point:\n" + readTime)
 
-                                       
+
                         if ang.lower() == '.lurk off':
-                            tz = pytz.timezone("Asia/Jakarta")
+                            tz = pytz.timezone("Asia/Bangkok")
                             timeNow = datetime.now(tz=tz)
                             day = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday","Friday", "Saturday"]
                             hari = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"]
@@ -828,10 +828,10 @@ def clientBot(op):
                                 except:
                                       pass
                                 client.sendReplyMessage(msg.id, msg.to, "Delete reading point:\n" + readTime)
-                
+
                         if ang.lower() == '.lurk reset':
                             if msg.toType == 2:
-                                tz = pytz.timezone("Asia/Jakarta")
+                                tz = pytz.timezone("Asia/Bangkok")
                                 timeNow = datetime.now(tz=tz)
                                 day = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday","Friday", "Saturday"]
                                 hari = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"]
@@ -856,10 +856,10 @@ def clientBot(op):
                                     client.sendReplyMessage(msg.id, msg.to, "Reset reading point:\n" + readTime)
                                 else:
                                     client.sendMessage(msg.id, msg.to, "Type '.lurk on' first.")
-                                    
+
                         if ang.lower() == '.lurkers':
                             if msg.toType == 2:
-                                tz = pytz.timezone("Asia/Jakarta")
+                                tz = pytz.timezone("Asia/Bangkok")
                                 timeNow = datetime.now(tz=tz)
                                 day = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday","Friday", "Saturday"]
                                 hari = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"]
@@ -878,7 +878,7 @@ def clientBot(op):
                                         chiya = []
                                         for rom in cctv["ROM"][msg.to].items():
                                             chiya.append(rom[1])
-                                        cmem = client.getContacts(chiya) 
+                                        cmem = client.getContacts(chiya)
                                         zx = ""
                                         zxc = ""
                                         zx2 = []
@@ -900,7 +900,7 @@ def clientBot(op):
                                     pass
                                 else:
                                     client.sendReplyMessage(msg.id, msg.to,"Lurk on first.")
-                                    
+
                         if ang.lower() == '.mention' or ang.lower() == '.tagall' or ang.lower() == "tagall":
                          if msg.toType == 2:
                             group = client.getGroup(msg.to)
@@ -908,7 +908,7 @@ def clientBot(op):
                             midSelect = len(midMembers)//20
                             for mentionMembers in range(midSelect+1):
                                 no = 0
-                                ret_ = "「 Mention Group 」\n• G-Operation\n• Simple SB\n"
+                                ret_ = "「 สมาชิกทั้งหมดในกลุ่ม 」\n• SKT-Operation ❂➣\n• ขออนุญาติ Tag นะครับ\n"
                                 dataMid = []
                                 for dataMention in group.members[mentionMembers*20 : (mentionMembers+1)*20]:
                                     dataMid.append(dataMention.mid)
@@ -917,12 +917,12 @@ def clientBot(op):
                                 ret_ += "\n\n「 Total {} Members 」".format(str(len(dataMid)))
                                 sendMention(msg.to, ret_, dataMid)
             except Exception as error:
-                client.sendMessage(msg.to, "[GOP ERROR]\n{}".format(str(error))) 
+                client.sendMessage(msg.to, "[GOP ERROR]\n{}".format(str(error)))
                 traceback.print_tb(error.__traceback__)
     except Exception as error:
-        client.sendMessage(msg.to, "[GOP ERROR]\n{}".format(str(error))) 
+        client.sendMessage(msg.to, "[GOP ERROR]\n{}".format(str(error)))
         traceback.print_tb(error.__traceback__)
-        
+
 while True:
     try:
         ops = clientPoll.singleTrace(count=50)
@@ -932,7 +932,7 @@ while True:
                 clientPoll.setRevision(op.revision)
     except Exception as error:
         client.sendMessage(msg.to, "[GOP ERROR]\n{}".format(str(error)))
-        traceback.print_tb(error.__traceback__)  
+        traceback.print_tb(error.__traceback__)
 #===============[ NOTE ]======================]
 # LINE PYTHON3: LINEPY
 # AUTHOR : FADHIIL RACHMAN & HELLO WORLD
