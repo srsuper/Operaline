@@ -914,7 +914,7 @@ def clientBot(op):
                                     dataMid.append(dataMention.mid)
                                     no += 1
                                     ret_ += "\n{}. @!\n".format(str(no))
-                                ret_ += "\n\n ⚫ Tagสมาชิกแล้ว {} ท่าน 💯 ".format(str(len(dataMid)))
+                                ret_ += "\n\n ⚫「 Total {} Members 」💯 ".format(str(len(dataMid)))
                                 sendMention(msg.to, ret_, dataMid)
             except Exception as error:
                 client.sendMessage(msg.to, "[GOP ERROR]\n{}".format(str(error)))
