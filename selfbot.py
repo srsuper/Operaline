@@ -397,7 +397,7 @@ def clientBot(op):
                         if ang.lower() == "me":
                             if msg.toType == 2:
                                 haha = client.getContact(msg._from)
-                                datax = {"type": "flex","altText": "G-Opera mengirim foto.","contents": {"type": "bubble","header": {"type": "box","layout": "vertical","contents": [{"type": "box","layout": "horizontal","contents": [{"type": "image","url":"https://obs.line-scdn.net/" + "{}".format(client.getContact(msg._from).pictureStatus),"size": "full","aspectMode": "cover","aspectRatio": "60:50","gravity": "center","flex": 1},{"type": "box","layout": "horizontal","contents": [{"type": "text","text": "Image","size": "xs","color": "#ffffff","align": "center","gravity": "center"}],"backgroundColor": "#EC3D44","paddingAll": "2px","paddingStart": "4px","paddingEnd": "4px","flex": 0,"position": "absolute","offsetStart": "18px","offsetTop": "18px","cornerRadius": "100px","width": "48px","height": "25px"}]}],"paddingAll": "0px"},"body": {"type": "box","layout": "vertical","contents": [{"type": "box","layout": "vertical","contents": [{"type": "box","layout": "vertical","contents": [{"type": "image","url": "https://imagizer.imageshack.com/v2/280x200q90/923/H1uMrZ.png","size": "full","aspectMode": "cover","aspectRatio": "80:25","gravity": "center","flex": 1}]}],"paddingAll": "13px","backgroundColor": "#000000","cornerRadius": "2px","margin": "xl"}],"paddingAll": "10px","backgroundColor": "#000000"}},}
+                                datax = {"type": "flex","altText": "SKT-Opera mengirim foto.","contents": {"type": "bubble","header": {"type": "box","layout": "vertical","contents": [{"type": "box","layout": "horizontal","contents": [{"type": "image","url":"https://obs.line-scdn.net/" + "{}".format(client.getContact(msg._from).pictureStatus),"size": "full","aspectMode": "cover","aspectRatio": "60:50","gravity": "center","flex": 1},{"type": "box","layout": "horizontal","contents": [{"type": "text","text": "Image","size": "xs","color": "#ffffff","align": "center","gravity": "center"}],"backgroundColor": "#EC3D44","paddingAll": "2px","paddingStart": "4px","paddingEnd": "4px","flex": 0,"position": "absolute","offsetStart": "18px","offsetTop": "18px","cornerRadius": "100px","width": "48px","height": "25px"}]}],"paddingAll": "0px"},"body": {"type": "box","layout": "vertical","contents": [{"type": "box","layout": "vertical","contents": [{"type": "box","layout": "vertical","contents": [{"type": "image","url": "https://imagizer.imageshack.com/v2/280x200q90/923/H1uMrZ.png","size": "full","aspectMode": "cover","aspectRatio": "80:25","gravity": "center","flex": 1}]}],"paddingAll": "13px","backgroundColor": "#000000","cornerRadius": "2px","margin": "xl"}],"paddingAll": "10px","backgroundColor": "#000000"}},}
                                 client.sendTemp(msg.to,datax)
                         if ang.lower() == ".geturl":
                             if msg.toType == 2:
@@ -462,7 +462,7 @@ def clientBot(op):
                             client.sendReplyMessage(msg.id,msg.to, "ID Grup : \n" + gid.id + "\n\nGroup name: \n" + str(gid.name))
 
                         if ang.lower() == ".panduan" or ang.lower() == "panduan":
-                           data = {"type": "flex","altText": "The G - Operation","contents": {"type": "bubble","styles": {"body": {"backgroundColor": "#000000"}},"body": {"type": "box","layout": "vertical","spacing": "lg","contents": [{"type": "image","url": "https://imagizer.imageshack.com/img922/9913/pz3ZBp.png","size": "xxl","aspectRatio": "6.50:2","aspectMode": "cover","action": {"type": "uri","uri": "http://line.me/ti/p/~@kmj4856d"}},{"type": "box","layout": "horizontal","spacing": "xl","contents": [{"type": "image","url":"https://lh3.googleusercontent.com/avr-Ht9lKzM9RdG0fr3Ev4cacXfUhHzKqSb3XHyqSQVrYhtMhyH__pZN6HuXu-9Zbdw","size": "full","aspectRatio": "1:1","aspectMode": "cover","action": {"type": "uri","uri":"line://home/public/profile?id=kmj4856d"}},{"type": "box","layout": "vertical","spacing": "sm","contents": [{"type": "text","text": "Panduan","size": "lg","weight": "bold","color": "#D32608","wrap": True},{"type": "text","text": "Cara menggunakan perintah pada simple selfbot G-Operation.\nKlik tombol READ.","size": "sm","color": "#ffffff","wrap": True},{"type": "button","style": "primary","color":"#800000","action": {"type": "uri","label": "READ","uri": "https://www.jurustupai.com/2020/05/panduan-menggunakan-perintah-pada.html?m=1"}}]}]}]}}}
+                           data = {"type": "flex","altText": "The SKT - Operation","contents": {"type": "bubble","styles": {"body": {"backgroundColor": "#000000"}},"body": {"type": "box","layout": "vertical","spacing": "lg","contents": [{"type": "image","url": "https://imagizer.imageshack.com/img922/9913/pz3ZBp.png","size": "xxl","aspectRatio": "6.50:2","aspectMode": "cover","action": {"type": "uri","uri": "http://line.me/ti/p/~@kmj4856d"}},{"type": "box","layout": "horizontal","spacing": "xl","contents": [{"type": "image","url":"https://lh3.googleusercontent.com/avr-Ht9lKzM9RdG0fr3Ev4cacXfUhHzKqSb3XHyqSQVrYhtMhyH__pZN6HuXu-9Zbdw","size": "full","aspectRatio": "1:1","aspectMode": "cover","action": {"type": "uri","uri":"line://home/public/profile?id=kmj4856d"}},{"type": "box","layout": "vertical","spacing": "sm","contents": [{"type": "text","text": "Panduan","size": "lg","weight": "bold","color": "#D32608","wrap": True},{"type": "text","text": "Cara menggunakan perintah pada simple selfbot G-Operation.\nKlik tombol READ.","size": "sm","color": "#ffffff","wrap": True},{"type": "button","style": "primary","color":"#800000","action": {"type": "uri","label": "READ","uri": "https://www.jurustupai.com/2020/05/panduan-menggunakan-perintah-pada.html?m=1"}}]}]}]}}}
                            client.sendTemp(msg.to,data)
 
                         if ang.lower() == ".groupict":
@@ -503,7 +503,7 @@ def clientBot(op):
                                       radmin += "\n%i. Unknown" % num
                                       num = (num+1)
                                try:
-                                  client.sendReplyMessage(msg.id, msg.to, "The G-Operation\n• Adminlist:\n" + radmin + "\n\nTotal: " + str(len(hoax)) + " Users.")
+                                  client.sendReplyMessage(msg.id, msg.to, "The SKT-Operation\n• Adminlist:\n" + radmin + "\n\nTotal: " + str(len(hoax)) + " Users.")
                                except Exception as e:
                                   client.sendReplyMessage(msg.id, msg.to,"{}".format(str(e)))
 
@@ -901,14 +901,14 @@ def clientBot(op):
                                 else:
                                     client.sendReplyMessage(msg.id, msg.to,"Lurk on first.")
 
-                        if ang.lower() == '.mention' or ang.lower() == '.tagall' or ang.lower() == "tagall":
+                        if ang.lower() == '.mention' or ang.lower() == '@' or ang.lower() == "tagall":
                          if msg.toType == 2:
                             group = client.getGroup(msg.to)
                             midMembers = [contact.mid for contact in group.members]
                             midSelect = len(midMembers)//20
                             for mentionMembers in range(midSelect+1):
                                 no = 0
-                                ret_ = "「 สมาชิกทั้งหมดในกลุ่ม 」\n• SKT-Operation ❂➣\n• ขออนุญาติ Tag นะครับ\n"
+                                ret_ = "「:: เริ่ม tag เรียกสมาชิก ::」\n• SKT-Operation ❂➣\n• ขออนุญาติ Tag นะครับ\n"
                                 dataMid = []
                                 for dataMention in group.members[mentionMembers*20 : (mentionMembers+1)*20]:
                                     dataMid.append(dataMention.mid)
