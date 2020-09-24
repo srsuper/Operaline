@@ -353,7 +353,7 @@ def clientBot(op):
                         if ang.lower() == ".me":
                             client.sendContact(msg.to,clientMid)
                         if ang.lower() == ".lurk" or ang.lower() == ".sider" or ang.lower() == ".kick" or ang.lower() == ".invite" or ang.lower() == ".updatename: " or ang.lower() == ".groupname:" or ang.lower() == ".updatebio:":
-                            client.sendReplyMessage(msg.id,msg.to,"Silahkan ketik .panduan")
+                            client.sendReplyMessage(msg.id,msg.to,"📌กรุณาดู คำสั่งได้ที่ .help")
                         if ang.lower() == ".reboot":
                             client.sendMessage(msg.to, "Bot Rebooting..")
                             restartBot()
@@ -362,10 +362,10 @@ def clientBot(op):
                              client.getProfile()
                              timing = time.time()
                              ngegas = japri - timing
-                             client.sendMessage(msg.to, "ความเร็ว: %.5f"%ngegas)
+                             client.sendMessage(msg.to, "📌ความเร็ว: %.5f"%ngegas)
                         if ang.lower() == ".runtime":
                            kopi = time.time() - botStart
-                           ang = "SKT bot has been running for:\n"+waktu(kopi)
+                           ang = "𝙎𝙆𝙏 𝙗𝙤𝙩 𝙝𝙖𝙨 𝙗𝙚𝙚𝙣 𝙧𝙪𝙣𝙣𝙞𝙣𝙜 𝙛𝙤𝙧:\n"+waktu(kopi)
                            client.sendMessage(msg.to,ang)
                         if ang.lower() == ".allowliff":
                             try:
@@ -429,14 +429,14 @@ def clientBot(op):
                                 else:
                                     gQr = "Opened"
                                     gTicket = "https://line.me/R/ti/g/{}".format(str(client.reissueGroupTicket(group.id)))
-                                japri = "❂➣ Group info ⍟─"
-                                japri += "\n\n•Group Name : {}".format(str(group.name))
-                                japri += "\n•ID Group :\n {}".format(group.id)
-                                japri += "\n•Created By : {}".format(str(gCreator))
-                                japri += "\n•Total Members : {}".format(str(len(group.members)))
-                                japri += "\n•Total Pending : {}".format(gPending)
-                                japri += "\n•Group Qr : {}".format(gQr)
-                                japri += "\n•Group Ticket : {}".format(gTicket)
+                                japri = "🔷 รายละเอียด กลุ่มนี้ 🔷"
+                                japri += "\n\n• ชื่อกลุ่ม : {}".format(str(group.name))
+                                japri += "\n• ID กลุ่ม :\n {}".format(group.id)
+                                japri += "\n• สร้างกลุ่มโดย : {}".format(str(gCreator))
+                                japri += "\n• จำนวนสมาชิก : {}".format(str(len(group.members)))
+                                japri += "\n• สมาชิกที่เชิญ : {}".format(gPending)
+                                japri += "\n• 𝙂𝙧𝙤𝙪𝙥 𝙌𝙧 : {}".format(gQr)
+                                japri += "\n• 𝙂𝙧𝙤𝙪𝙥 𝙏𝙞𝙘𝙠𝙚𝙩 : {}".format(gTicket)
                                 client.sendReplyMessage(msg.id,msg.to, str(japri))
 
                         if ang.lower() == ".myfriendlist":
@@ -444,7 +444,7 @@ def clientBot(op):
                             contactlist = client.getAllContactIds()
                             contacts = client.getContacts(contactlist)
                             num=1
-                            msgs="•My Friendlist:\n"
+                            msgs="🔷𝙈𝙮 𝙁𝙧𝙞𝙚𝙣𝙙𝙡𝙞𝙨𝙩:\n"
                             for ids in contacts:
                                 msgs+="\n%i. %s" % (num, ids.displayName)
                                 num=(num+1)
@@ -459,7 +459,7 @@ def clientBot(op):
                         if ang.lower() == ".groupid":
                          if msg.toType == 2:
                             gid = client.getGroup(msg.to)
-                            client.sendReplyMessage(msg.id,msg.to, "ID Grup : \n" + gid.id + "\n\nGroup name: \n" + str(gid.name))
+                            client.sendReplyMessage(msg.id,msg.to, "ID กลุ่ม : \n" + gid.id + "\n\nชื่อกลุ่ม : \n" + str(gid.name))
 
                         if ang.lower() == ".panduan" or ang.lower() == "panduan":
                            data = {"type": "flex","altText": "The SKT - Operation","contents": {"type": "bubble","styles": {"body": {"backgroundColor": "#000000"}},"body": {"type": "box","layout": "vertical","spacing": "lg","contents": [{"type": "image","url": "https://imagizer.imageshack.com/img922/9913/pz3ZBp.png","size": "xxl","aspectRatio": "6.50:2","aspectMode": "cover","action": {"type": "uri","uri": "http://line.me/ti/p/~@kmj4856d"}},{"type": "box","layout": "horizontal","spacing": "xl","contents": [{"type": "image","url":"https://lh3.googleusercontent.com/avr-Ht9lKzM9RdG0fr3Ev4cacXfUhHzKqSb3XHyqSQVrYhtMhyH__pZN6HuXu-9Zbdw","size": "full","aspectRatio": "1:1","aspectMode": "cover","action": {"type": "uri","uri":"line://home/public/profile?id=kmj4856d"}},{"type": "box","layout": "vertical","spacing": "sm","contents": [{"type": "text","text": "Panduan","size": "lg","weight": "bold","color": "#D32608","wrap": True},{"type": "text","text": "Cara menggunakan perintah pada simple selfbot G-Operation.\nKlik tombol READ.","size": "sm","color": "#ffffff","wrap": True},{"type": "button","style": "primary","color":"#800000","action": {"type": "uri","label": "READ","uri": "https://www.jurustupai.com/2020/05/panduan-menggunakan-perintah-pada.html?m=1"}}]}]}]}}}
@@ -479,7 +479,7 @@ def clientBot(op):
                             gruplist = client.getGroupIdsJoined()
                             kontak = client.getGroups(gruplist)
                             num=0
-                            msgs="My Grouplist:\n"
+                            msgs="👺ൠ  ΜЎ Ğ𝐑𝐎Ữρ𝔩ⒾŞŦ  👍😡:\n"
                             for ids in kontak:
                                msgs+="\n%i - %s" % (num, ids.name) + " (" + str(len(ids.members)) + ")"
                                num=(num+1)
@@ -489,7 +489,7 @@ def clientBot(op):
                         if ang.lower() == ".adminlist":
                          if msg.toType == 2:
                             if manage["admin"] == {}:
-                               client.sendReplyMessage(msg.id, msg.to,"adminlist empty!")
+                               client.sendReplyMessage(msg.id, msg.to,"ΛDMIПᄂIƧƬ ΣMPƬY!")
                             else:
                                radmin = ""
                                hoax = manage['admin']
@@ -503,7 +503,7 @@ def clientBot(op):
                                       radmin += "\n%i. Unknown" % num
                                       num = (num+1)
                                try:
-                                  client.sendReplyMessage(msg.id, msg.to, "The SKT-Operation\n• Adminlist:\n" + radmin + "\n\nTotal: " + str(len(hoax)) + " Users.")
+                                  client.sendReplyMessage(msg.id, msg.to, "𝕊𝕂𝕋-𝕆𝕡𝕖𝕣𝕒𝕥𝕚𝕠𝕟\n• ᴀᴅᴍɪɴʟɪꜱᴛ:\n" + radmin + "\n\nTotal: " + str(len(hoax)) + " Users.")
                                except Exception as e:
                                   client.sendReplyMessage(msg.id, msg.to,"{}".format(str(e)))
 
@@ -513,9 +513,9 @@ def clientBot(op):
                                 putar = requests.get("http://mnazria.herokuapp.com/api/joox?search={}".format(str(urllib.parse.quote(music))))
                                 data = putar.text
                                 data = json.loads(data)
-                                angling = "🎵 JOOX MUSIC AUDIO"
-                                angling += "\n\n• Music search: {}".format(music)
-                                angling += "\n• Downloading.."
+                                angling = "🎵 𝙹𝙾𝙾𝚇 𝙼𝚄𝚂𝙸𝙲 𝙰𝚄𝙳𝙸𝙾"
+                                angling += "\n\n• 𝙈𝙪𝙨𝙞𝙘 𝙨𝙚𝙖𝙧𝙘𝙝: {}".format(music)
+                                angling += "\n• 𝘿𝙤𝙬𝙣𝙡𝙤𝙖𝙙𝙞𝙣𝙜.."
                                 client.sendReplyMessage(msg.id,msg.to,angling)
                                 client.sendImageWithURL(msg.to,"{}".format(str(data["picture"])))
                                 client.sendAudioWithURL(msg.to,"{}".format(str(data["mp3"])))
@@ -531,13 +531,13 @@ def clientBot(op):
                                 text = data[0].get('content').split()
                                 data1 = soup.find_all('meta', attrs={'property':'og:image'})
                                 text1 = data1[0].get('content').split()
-                                insta_ = "📲「Instagram Info」\n\n"
-                                insta_ += "◉  Profile Name : " + text[-3] + " " + text[-2] +"\n"
-                                insta_ += "◉  Username ID : " + text[-1] + "\n"
-                                insta_ += "◉  Followers : " + text[0] + "\n"
-                                insta_ += "◉  Following : " + text[2] + "\n"
-                                insta_ += "◉  Posts : " + text[4] + "\n"
-                                insta_ += "◉  Profile URL :\n" + "https://www.instagram.com/" + instagram
+                                insta_ = "📲「𝙄𝙣𝙨𝙩𝙖𝙜𝙧𝙖𝙢 𝙄𝙣𝙛𝙤」\n\n"
+                                insta_ += "◉  𝙋𝙧𝙤𝙛𝙞𝙡𝙚 𝙉𝙖𝙢𝙚 : " + text[-3] + " " + text[-2] +"\n"
+                                insta_ += "◉  𝙐𝙨𝙚𝙧𝙣𝙖𝙢𝙚 𝙄𝘿 : " + text[-1] + "\n"
+                                insta_ += "◉  𝙁𝙤𝙡𝙡𝙤𝙬𝙚𝙧𝙨 : " + text[0] + "\n"
+                                insta_ += "◉  𝙁𝙤𝙡𝙡𝙤𝙬𝙞𝙣𝙜 : " + text[2] + "\n"
+                                insta_ += "◉  𝙋𝙤𝙨𝙩𝙨 : " + text[4] + "\n"
+                                insta_ += "◉  𝙋𝙧𝙤𝙛𝙞𝙡𝙚 𝙐𝙍𝙇 :\n" + "https://www.instagram.com/" + instagram
                                 insta_ += ""
                                 client.sendMessage(msg.to,"{}".format(str(insta_)))
                             except Exception as e:client.sendReplyMessage(msg.id, msg.to,"{}".format(str(e)))
@@ -624,11 +624,11 @@ def clientBot(op):
                         if ang.lower() == ".kickall":
                          if msg.toType == 2:
                              hoax = client.getGroup(msg.to)
-                             client.sendMessage(msg.to,"Goodbye Bitch ~")
+                             client.sendMessage(msg.to,"𝙂𝙤𝙤𝙙𝙗𝙮𝙚 𝘽𝙞𝙩𝙘𝙝 ~")
                              for angg in hoax.members:
                                  if angg.mid not in manage["admin"]:
                                      client.kickoutFromGroup(msg.to,[angg.mid])
-                             client.sendMessage(msg.to,"Rubish has been cleared")
+                             client.sendMessage(msg.to,"𝗚𝗿𝗼𝘂𝗽 𝗵𝗮𝘀 𝗯𝗲𝗲𝗻 𝗰𝗹𝗲𝗮𝗿𝗲𝗱")
 
 
                         if ang.lower().startswith(".addadmin "):
@@ -639,13 +639,13 @@ def clientBot(op):
                                 targets.append(x["M"])
                             for target in targets:
                                 if target in manage["admin"]:
-                                    client.sendReplyMessage(msg.id,msg.to, "Already in admin.")
+                                    client.sendReplyMessage(msg.id,msg.to, "𝘼𝙡𝙧𝙚𝙖𝙙𝙮 𝙞𝙣 𝙖𝙙𝙢𝙞𝙣.")
                                 else:
                                       try:
                                          manage["admin"][target] = True
                                          with open('admin.json', 'w') as fp:
                                              json.dump(manage, fp, sort_keys=True, indent=4)
-                                         client.sendReplyMessage(msg.id,msg.to,client.getContact(target).displayName +" add to admin.")
+                                         client.sendReplyMessage(msg.id,msg.to,client.getContact(target).displayName +" 𝙖𝙙𝙙 𝙩𝙤 𝙖𝙙𝙢𝙞𝙣.")
                                       except Exception as error:
                                          client.sendMessage(msg.to,"[ERROR]\n{}".format(str(error)))
 
@@ -658,13 +658,13 @@ def clientBot(op):
                                 targets.append(x["M"])
                             for target in targets:
                                 if target not in manage["admin"]:
-                                    client.sendReplyMessage(msg.id,msg.to, "User not in admin")
+                                    client.sendReplyMessage(msg.id,msg.to, "𝙐𝙨𝙚𝙧 𝙣𝙤𝙩 𝙞𝙣 𝙖𝙙𝙢𝙞𝙣")
                                 else:
                                     try:
                                         del manage["admin"][target]
                                         with open('admin.json', 'w') as fp:
                                             json.dump(manage, fp, sort_keys=True, indent=4)
-                                        client.sendReplyMessage(msg.id,msg.to,client.getContact(target).displayName +" removed from admin.")
+                                        client.sendReplyMessage(msg.id,msg.to,client.getContact(target).displayName +" яємσνє∂ ƒяσм α∂мιη.")
                                     except Exception as error:
                                         client.sendMessage(msg.to,"[ ERROR]\n{}".format(str(error)))
 
@@ -680,7 +680,7 @@ def clientBot(op):
                                 for target in targets:
                                    client.findAndAddContactsByMid(target)
                                    client.inviteIntoGroup(msg.to, [target])
-                                   client.sendMessage(msg.to, client.getContact(target).displayName + " has been invited.")
+                                   client.sendMessage(msg.to, client.getContact(target).displayName + " нαѕ вєєη ιηνιтє∂.")
                              else:pass
 
 
@@ -728,9 +728,9 @@ def clientBot(op):
                             key1 = key["MENTIONEES"][0]["M"]
                             contact = client.getContact(key1)
                             if contact.statusMessage is None or contact.statusMessage =="":
-                               client.sendReplyMessage(msg.id,msg.to,"Status not found.")
+                               client.sendReplyMessage(msg.id,msg.to,"𝙎𝙩𝙖𝙩𝙪𝙨 𝙣𝙤𝙩 𝙛𝙤𝙪𝙣𝙙.")
                             else:
-                               client.sendReplyMessage(msg.id, msg.to, "「 Status Message 」\n" + contact.statusMessage)
+                               client.sendReplyMessage(msg.id, msg.to, "§.•´¨'°÷•..× ｓt𝐚𝕋𝕌𝔰 ｍＥｓ𝓢𝓪𝔾є ×,.•´¨'°÷•..§\n" + contact.statusMessage)
 
 
                         if ang.lower() == ".sider on":
@@ -739,13 +739,13 @@ def clientBot(op):
                                     cctv["Point3"][msg.to] = {}
                                     with open('cctv.json', 'w') as fp:
                                         json.dump(cctv, fp, sort_keys=True, indent=4)
-                                    client.sendReplyMessage(msg.id,msg.to,"Cek radar restarting..")
+                                    client.sendReplyMessage(msg.id,msg.to,"𝘾𝙝𝙚𝙘𝙠 𝙧𝙖𝙙𝙖𝙧 𝙧𝙚𝙨𝙩𝙖𝙧𝙩𝙞𝙣𝙜..")
                                 else:
                                     cctv["Point"][msg.to]= True
                                     cctv["Point3"][msg.to] = {}
                                     with open('cctv.json', 'w') as fp:
                                         json.dump(cctv, fp, sort_keys=True, indent=4)
-                                    client.sendReplyMessage(msg.id,msg.to,"Cek radar running..")
+                                    client.sendReplyMessage(msg.id,msg.to,"𝘾𝙝𝙚𝙘𝙠 𝙧𝙖𝙙𝙖𝙧 𝙧𝙪𝙣𝙣𝙞𝙣𝙜..")
 
 
                         if ang.lower() == ".sider off":
@@ -754,9 +754,9 @@ def clientBot(op):
                                     del cctv["Point"][msg.to]
                                     with open('cctv.json', 'w') as fp:
                                         json.dump(cctv, fp, sort_keys=True, indent=4)
-                                    client.sendReplyMessage(msg.id,msg.to,"Cek radar disabled.")
+                                    client.sendReplyMessage(msg.id,msg.to,"𝘾𝙝𝙚𝙘𝙠 𝙧𝙖𝙙𝙖𝙧 𝙙𝙞𝙨𝙖𝙗𝙡𝙚𝙙.")
                                 else:
-                                    client.sendReplyMessage(msg.id,msg.to,"Cek radar already disabled.")
+                                    client.sendReplyMessage(msg.id,msg.to,"𝘾𝙝𝙚𝙘𝙠 𝙧𝙖𝙙𝙖𝙧 𝙖𝙡𝙧𝙚𝙖𝙙𝙮 𝙙𝙞𝙨𝙖𝙗𝙡𝙚𝙙.")
 
                         if ang.lower() == '.lurk on':
                             tz = pytz.timezone("Asia/Bangkok")
@@ -784,7 +784,7 @@ def clientBot(op):
                                     cctv['ROM'][msg.to] = {}
                                     with open('cctv.json', 'w') as fp:
                                         json.dump(cctv, fp, sort_keys=True, indent=4)
-                                    client.sendReplyMessage(msg.id,msg.to,"Lurking already enabled")
+                                    client.sendReplyMessage(msg.id,msg.to,"𝗦𝗽𝘆 𝗔𝗹𝗿𝗲𝗮𝗱𝘆 𝗘𝗻𝗮𝗯𝗹𝗲𝗱")
                             else:
                                  try:
                                    del cctv['readPoint'][msg.to]
@@ -800,7 +800,7 @@ def clientBot(op):
                                  cctv['ROM'][msg.to] = {}
                                  with open('cctv.json', 'w') as fp:
                                      json.dump(cctv, fp, sort_keys=True, indent=4)
-                                 client.sendReplyMessage(msg.id, msg.to, "Set reading point:\n" + readTime)
+                                 client.sendReplyMessage(msg.id, msg.to, "𝐒𝐞𝐭 𝐫𝐞𝐚𝐝𝐢𝐧𝐠 𝐩𝐨𝐢𝐧𝐭:\n" + readTime)
 
 
                         if ang.lower() == '.lurk off':
@@ -817,7 +817,7 @@ def clientBot(op):
                                 if bln == str(k): bln = bulan[k-1]
                             readTime = hasil + ", " + timeNow.strftime('%d') + " - " + bln + " - " + timeNow.strftime('%Y') + "\nJam : [ " + timeNow.strftime('%H:%M:%S') + " ]"
                             if msg.to not in cctv['readPoint']:
-                                client.sendReplyMessage(msg.id,msg.to,"Lurking already enabled.")
+                                client.sendReplyMessage(msg.id,msg.to,"𝐒𝐞𝐭 𝐒𝐩𝐲 𝐀𝐥𝐫𝐞𝐚𝐝𝐲 𝐄𝐧𝐚𝐛𝐥𝐞𝐝.")
                             else:
                                 try:
                                         del cctv['readPoint'][msg.to]
@@ -827,7 +827,7 @@ def clientBot(op):
                                             json.dump(cctv, fp, sort_keys=True,indent=4)
                                 except:
                                       pass
-                                client.sendReplyMessage(msg.id, msg.to, "Delete reading point:\n" + readTime)
+                                client.sendReplyMessage(msg.id, msg.to, "𝐃𝐞𝐥𝐞𝐭𝐞 𝐫𝐞𝐚𝐝𝐢𝐧𝐠 𝐩𝐨𝐢𝐧𝐭:\n" + readTime)
 
                         if ang.lower() == '.lurk reset':
                             if msg.toType == 2:
@@ -853,7 +853,7 @@ def clientBot(op):
                                             json.dump(cctv, fp, sort_keys=True,indent=4)
                                     except:
                                         pass
-                                    client.sendReplyMessage(msg.id, msg.to, "Reset reading point:\n" + readTime)
+                                    client.sendReplyMessage(msg.id, msg.to, "𝐑𝐞𝐬𝐞𝐭 𝐫𝐞𝐚𝐝𝐢𝐧𝐠 𝐩𝐨𝐢𝐧𝐭:\n" + readTime)
                                 else:
                                     client.sendMessage(msg.id, msg.to, "Type '.lurk on' first.")
 
@@ -908,13 +908,13 @@ def clientBot(op):
                             midSelect = len(midMembers)//20
                             for mentionMembers in range(midSelect+1):
                                 no = 0
-                                ret_ = "「:: เริ่ม tag เรียกสมาชิก ::」\n• SKT-Operation ❂➣\n• ขออนุญาติ Tag นะครับ\n"
+                                ret_ = "🔘 ขออนุญาติ เริ่ม tag เรียกสมาชิก 🔘\n"
                                 dataMid = []
                                 for dataMention in group.members[mentionMembers*20 : (mentionMembers+1)*20]:
                                     dataMid.append(dataMention.mid)
                                     no += 1
                                     ret_ += "\n{}. @!\n".format(str(no))
-                                ret_ += "\n\n「 Total {} Members 」".format(str(len(dataMid)))
+                                ret_ += "\n\n ⚫ Tagสมาชิกแล้ว {} ท่าน 💯 ".format(str(len(dataMid)))
                                 sendMention(msg.to, ret_, dataMid)
             except Exception as error:
                 client.sendMessage(msg.to, "[GOP ERROR]\n{}".format(str(error)))
